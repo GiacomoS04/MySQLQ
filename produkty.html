@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stare Baby Shop - Produkty</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 15px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stare Baby Shop</h1>
+    </header>
+
+    <nav>
+        <a href="stare_baby.html">Strona główna</a>
+        <a href="produkty.html">Produkty</a>
+        <a href="onas.html">O Nas</a>
+        <a href="koszyk.html">Koszyk</a>
+    </nav>
+
+    <section>
+        <div class="product">
+            <img src="grazyna2000.jpg" alt="Grazyna 2000">
+            <h2>Grazyna 2000</h2>
+            <p>Opis produktu: Grazyna 2000 - nowoczesna lalka z interaktywnymi funkcjami.</p>
+            <p>Cena: $49.99</p>
+            <button onclick="addToCart('Grazyna 2000', 49.99)">Dodaj do koszyka</button>
+        </div>
+
+        <div class="product">
+            <img src="jadziaterminator.jpg" alt="Jadzia Terminator">
+            <h2>Jadzia Terminator</h2>
+            <p>Opis produktu: Jadzia Terminator - lalka o futurystycznym designie z wbudowanymi efektami dźwiękowymi.</p>
+            <p>Cena: $59.99</p>
+            <button onclick="addToCart('Jadzia Terminator', 59.99)">Dodaj do koszyka</button>
+        </div>
+
+        <div class="product">
+            <img src="starypluszak.jpg" alt="Stary pluszak">
+            <h2>Stary pluszak</h2>
+            <p>Opis produktu: Miękki pluszak z lat 80. w doskonałym stanie.</p>
+            <p>Cena: $19.99</p>
+            <button onclick="addToCart('Stary pluszak', 19.99)">Dodaj do koszyka</button>
+        </div>
+
+        <div class="product">
+            <img src="lalkazdzieckiem.jpg" alt="Lalka z dzieckiem">
+            <h2>Lalka z dzieckiem</h2>
+            <p>Opis produktu: Urocza lalka z dzieckiem, idealna do zabawy w rodzinę.</p>
+            <p>Cena: $39.99</p>
+            <button onclick="addToCart('Lalka z dzieckiem', 39.99)">Dodaj do koszyka</button>
+        </div>
+
+        <div class="product">
+            <img src="staramatka.jpg" alt="Stara matka">
+            <h2>Stara matka</h2>
+            <p>Opis produktu: Lalka przedstawiająca starą matkę, doskonała do kolekcji retro.</p>
+            <p>Cena: $34.99</p>
+            <button onclick="addToCart('Stara matka', 34.99)">Dodaj do koszyka</button>
+        </div>
+
+        <!-- Dodaj kolejne produkty analogicznie -->
+
+    </section>
+
+    <footer>
+        &copy; 2024 Stare Baby Shop
+    </footer>
+
+    <script>
+        function addToCart(productName, price) {
+            alert('Dodano ' + productName + ' do koszyka za ' + price + '$.');
+            // Tutaj można dodać logikę obsługi koszyka, np. przekazując dane do backendu.
+        }
+    </script>
+</body>
+</html>

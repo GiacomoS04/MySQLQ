@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stare Baby Shop - Koszyk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .cart-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 15px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .cart-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stare Baby Shop</h1>
+    </header>
+
+    <nav>
+        <a href="stare_baby.html">Strona główna</a>
+        <a href="produkty.html">Produkty</a>
+        <a href="onas.html">O Nas</a>
+        <a href="koszyk.html">Koszyk</a>
+    </nav>
+
+    <section>
+        <h2>Koszyk</h2>
+
+        <!-- Tutaj będziemy dynamicznie dodawać produkty z JavaScript -->
+
+        <!-- Całkowita cena -->
+        <p id="total-price">Całkowita cena: $0.00</p>
+
+        <!-- Przycisk do przejścia do płatności -->
+        <button onclick="checkout()">Przejdź do płatności</button>
+    </section>
+
+    <footer>
+        &copy; 2024 Stare Baby Shop
+    </footer>
+
+    <script>
+        // Pobierz dane z lokalnego magazynu (localStorage)
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Funkcja do renderowania produktów w koszyku
+        function renderCart() {
+            const cartSection = document.querySelector('section');
+            const totalPriceElement = document.getElementById('total-price');
+            let totalPrice = 0;
+
+            // Wyczyszczenie sekcji koszyka
+            cartSection.innerHTML = '';
+
+            // Iteracja przez produkty w koszyku
+            cartItems.forEach(item => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'cart-item';
+
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.alt = item.name;
+
+                const name = document.createElement('h3');
+                name.textContent = item.name;
+
+                const price = document.createElement('p');
+                price.textContent = `Cena: $${item.price.toFixed(2)}`;
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Usuń z koszyka';
+                removeButton.onclick = () => removeFromCart(item);
+                
+                // Dodaj elementy do diva produktu
+                productDiv.appendChild(img);
+                productDiv.appendChild(name);
+                productDiv.appendChild(price);
+                productDiv.appendChild(removeButton);
+
+                // Dodaj diva produktu do sekcji koszyka
+                cartSection.appendChild(productDiv);
+
+                // Dodaj cenę produktu do całkowitej ceny
+                totalPrice += item.price;
+            });
+
+            // Zaktualizuj całkowitą cenę
+            totalPriceElement.textContent = `Całkowita cena: $${totalPrice.toFixed(2)}`;
+        }
+
+        // Funkcja usuwająca produkt z koszyka
+        function removeFromCart(item) {
+            const index = cartItems.findIndex(cartItem => cartItem.name === item.name);
+            if (index !== -1) {
+                cartItems.splice(index, 1);
+                // Zapisz zaktualizowany koszyk w lokalnym magazynie
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                // Zaktualizuj widok koszyka
+                renderCart();
+            }
+        }
+
+        // Funkcja do przejścia do płatności
+        function checkout() {
+            alert('Przejdź do płatności. Tutaj można dodać logikę obsługi płatności.');
+            // Tutaj można dodać logikę obsługi płatności, np. przekazując dane do bramki płatności.
+        }
+
+        // Pierwsze renderowanie koszyka
+        renderCart();
+    </script>
+</body>
+</html>
